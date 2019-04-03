@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Amigos Académicos</title>
+  <% include partials/head %>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="col-sm-6 mx-auto">
+      <div class="card mt-5">
+        <div class="card-body">
+          <h1 class="text-center">
+            <span class="fa fa-sign-in"></span> Registro de asesoría.
+          </h1>
+
+          <% if (message.length > 0) { %>
+          <div class="alert alert-danger">
+            <%= message %>
+          </div>
+          <% } %>
+
+          <form action="/registrarAsesoria" id="formulario" method="post">
+            <div class="form-group">
+              <label for="identificador">¡¡Acerca tu carnet, Amigo Académico!!</label>
+              <input type="password" id="serialAmigo" name="serialAmigo" class="form-control" readonly required="required">
+            </div>
+
+            <div class="form-group">
+              <label for="identificador">Estudiante Asesorado: </label>
+              <input type="text" id="nombreEstudiante" name="nombreEstudiante" value="<%= datos.nombre %>" class="form-control" readonly required="required">
+              <input type="hidden" id="serialEstudiante" name="serialEstudiante" class="form-control"
+              value="<%=datos.serialCarnet%>" readonly required="required">
+              <label for="materia">Materia de la cual se realizó la asesoría</label>
+              <select name="materia" id="materia">
+                <option value="Fundamentos de Programación">Fundamentos de Programación</option>
+                <option value="Cálculo Diferencial">Cálculo Diferencial</option>
+                <option value="Matemáticas Discretas">Matemáticas Discretas</option>
+                <option value="Programación Orientada a Objetos">Programación Orientada a Objetos</option>
+                <option value="Cálculo Integral">Cálculo Integral</option>
+                <option value="Álgebra Lineal">Álgebra Lineal</option>
+                <option value="Física Mecánica">Física Mecánica</option>
+                <option value="Estadísica">Estadísica</option>
+                <option value="Estructura de Datos">Estructura de Datos</option>
+                <option value="Programación Orientada a Objetos II">Programación Orientada a Objetos II</option>
+                <option value="Cálculo Vectorial">Cálculo Vectorial</option>
+                <option value="Física Electromagnética">Física Electromagnética</option>
+                <option value="Otros">Otros</option>
+              </select>
+              <br>
+              <label for="tema">Tema de la asesoría<label>
+              <input type="text" id="tema" name="tema" class="form-control" required="required">
+              <input type="submit" class="btn btn-dark btn-lg" value="Registrar">
+            </div>
+          </form>
+
+          <script src="/socket.io/socket.io.js"></script>
+          <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+          <script>
+            $(function () {
+              var socket = io();
+              socket.on('nuevo uid', function (msg) {
+                $('#serialAmigo').val(msg);
+              });
+            });
+          </script>
+
+          <hr>
+          <div class="text-center">
+            <p><a href="/">Atrás</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

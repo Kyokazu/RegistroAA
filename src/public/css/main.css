@@ -1,0 +1,45 @@
+.login {
+  background: #56ab2f;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.signup {
+  background: #000428;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#boton{
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  font-size: 17px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: #56ab2f;
+  border-radius: 5px;
+  color: aliceblue;
+  box-sizing: border-box;
+  transition: all 500ms ease;
+}
+.table table-hover {
+  height:180px;
+}
+li a {
+  text-decoration: none;
+  padding-left:  10px;
+  padding-right: 10px;
+}
+li a span {
+  color: aliceblue;
+  text-decoration: none;
+  background-color: #56ab2f;
+  padding: 10px;
+}
+li a{
+  cursor: pointer;
+}
+.active a:hover{
+  cursor: pointer;
+  font-size: 24px;
+  color: #000428;
+}

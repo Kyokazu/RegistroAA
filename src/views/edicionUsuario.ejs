@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Amigos Académicos</title>
+  <% include partials/head %>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="col-sm-6 mx-auto">
+      <div class="card mt-5">
+        <div class="card-body">
+          <h1 class="text-center">
+            <span class="fa fa-sign-in"></span> Edición del Usuario.
+          </h1>
+          <% if (message.length > 0) { %>
+            <div class="alert alert-danger">
+              <%= message %>
+            </div>
+          <% } %>
+
+          <form action="/editarUsuario" id="formulario" method="post">
+            <div class="form-group">
+              <label for="identificador">Identificador</label>
+              <input type="text" id="serial" name="serial" class="form-control" value="<%=datos.serial%>" required="required" readonly>
+              <label for="codigo">Código</label>
+              <input type="number" id="codigo" name="codigo" class="form-control"  value="<%=datos.codigo%>" required="required">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" class="form-control" value="<%=datos.nombre%>" required="required">
+              <label for="correo">Correo</label>
+              <input type="email" id="correo" name="correo" class="form-control" value="<%=datos.correo%>" required="required">
+              <input type="hidden" id="serialAdmin" name="serialAdmin" class="form-control"
+              value="<%=serial%>" readonly>
+              <input type="submit" class="btn btn-dark btn-lg" value="Registrar estudiante.">
+            </div>
+          </form>
+
+          <script src="/socket.io/socket.io.js"></script>
+          <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+          <hr>
+          <div class="text-center">
+            <form action="/carnet" method="post">
+                <input type="hidden" name="serial" id="serial" value="<%=serial%>">
+                <input type="submit" class="btn btn-dark btn-lg" value="Regresar">
+            </form>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

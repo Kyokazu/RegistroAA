@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Amigos Académicos</title>
+	<% include partials/head %>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="card text-center mt-5">
+			<div class="card-body">
+				<h1><span class="fa fa-block"></span>Registro de Asesorías - Amigos Académicos.</h1>
+				<% if (message.length > 0) { %>
+				<div class="alert alert-success">
+					<%= message %>
+				</div>
+				<% } %>
+
+				<form action="/carnet" id="formulario" method="post">
+					<div class="form-group">
+						<input type="hidden" id="serial" name="serial" class="form-control">
+					</div>
+				</form>
+				
+			</div>
+			<center>
+			<img src="/images/carnet.jpg" style="width:350px;height:500px;"></center>
+		</div>
+
+		
+	</div>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+
+	<script>
+		$(function () {
+			var socket = io();
+			socket.on('nuevo uid', function (msg) {
+				$('#serial').val(msg);
+				console.log($('#serial').val());
+				$('#formulario').submit();
+			});
+		});
+	
+
+
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<link href="public/css/vendor/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="public/css/vendor/font-awesome.min.css" type="text/css" rel="stylesheet">
+<link href='public/https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+<link href="public/css/jquery.bdt.css" type="text/css" rel="stylesheet">
+<link href="css/style.css" type="text/css" rel="stylesheet">
+<link href="css/style.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="/css/main.css">
+
+<div class="container">
+    <div class="row">
+        <div class="box clearfix">
+            <center>
+                <br>
+                <h3 style="margin-top:10px; font-size: 35px;">Administración de Usuarios</h3>
+
+                <table class="table table-hover" id="bootstrap-table">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Nombre</th>
+                            <th>Código</th>
+                            <th>Correo</th>
+                            <th>Tipo de usuario</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%for(i=0;i<datos2.length;i++){%>
+                        <tr>
+                            <td> <%= datos2[i].serialCarnet %> </td>
+                            <td> <%= datos2[i].nombre %></td>
+                            <td> <%= datos2[i].codigo %></td>
+                            <td> <%= datos2[i].correo %></td>
+                            <td> <%= datos2[i].tipo %></td>
+                            <td>
+                                <form action="/editarUsuarioForm" method="post">
+                                    <input type="hidden" id="serialCarnet" name="serialCarnet" class="form-control"
+                                        value="<%=datos2[i].serialCarnet %>" readonly>
+                                        <input type="hidden" id="serialAdmin" name="serialAdmin" class="form-control"
+                                        value="<%=serial%>" readonly>
+                                    <input type="submit" class="btn btn-dark btn-lg" value="Editar Usuario">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="/eliminarUsuario" method="post">
+                                    <input type="hidden" id="serialCarnet" name="serialCarnet" class="form-control"
+                                        value="<%=datos2[i].serialCarnet %>" readonly>
+                                        <input type="hidden" id="serialAdmin" name="serialAdmin" class="form-control"
+                                        value="<%=serial%>" readonly>
+                                    <input type="submit" class="btn btn-dark btn-lg" value="Eliminar Usuario">
+                                </form>
+                            </td>
+                        </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+            </div>
+            </center>
+        </div>
+	</div>
+	<div class="text-center">
+        <form action="/carnet" method="post">
+            <input type="hidden" name="serial" id="serial" value="<%=serial%>">
+            <input type="submit" class="btn btn-dark btn-lg" value="Regresar">
+        </form>
+        </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="js/vendor/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/vendor/jquery.sortelements.js" type="text/javascript"></script>
+    <script src="js/jquery.bdt.min.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            $('#bootstrap-table').bdt({
+                showSearchForm: 0,
+                showEntriesPerPageField: 0
+            });
+        });
+    </script>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Amigos Académicos</title>
+        <% include partials/head %>
+    </head>

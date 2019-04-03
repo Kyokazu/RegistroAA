@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Amigos Académicos</title>
+  <% include partials/head %>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="col-sm-6 mx-auto">
+      <div class="card mt-5">
+        <div class="card-body">
+          <h1 class="text-center">
+            <span class="fa fa-sign-in"></span> Registro de asistencia
+          </h1>
+
+          <% if (message.length > 0) { %>
+            <div class="alert alert-success">
+              <%= message %>
+            </div>
+            <% } %>
+
+          <form action="" id="formulario">
+            <div class="form-group">
+              <label for="serial">Nombre</label>
+              <input type="text" id="nombre" name="nombre" value="<%=amigo.nombre%>" class="form-control" readonly>
+              <label for="serial">Correo</label>
+              <input type="text" id="correo" name="correo" value="<%=amigo.correo%>" class="form-control" readonly>
+              <label for="serial">Código</label>
+              <input type="text" id="codigo" name="codigo" value="<%=amigo.codigo%>" class="form-control" readonly>
+              <label for="serial">Hora de Entrada</label>
+              <input type="text" id="serial" name="serial" value="<%=horaE%>:<%=minutoE%>"class="form-control" readonly>
+              <label for="serial">Hora de Salida</label>
+              <input type="text" id="serial" name="serial" value="<%=horaS%>:<%=minutoS%>"class="form-control" readonly>
+            </div>
+          </form>
+
+          <hr>
+          <div class="text-center">
+            <p><a href="/">Volver al menú principal</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
